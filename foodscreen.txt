@@ -1,0 +1,351 @@
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+const App = () => {
+    return (
+        <SafeAreaView style={styles.container}>
+	<ScrollView  style={styles.scrollView}>
+		<View style={styles.row}>
+			<Image
+				source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+				resizeMode = {"stretch"}
+				style={styles.image}
+			/>
+			<View style={styles.box}>
+			</View>
+			<Image
+				source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+				resizeMode = {"stretch"}
+				style={styles.image2}
+			/>
+		</View>
+		<View style={styles.row2}>
+			<Image
+				source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+				resizeMode = {"stretch"}
+				style={styles.image3}
+			/>
+			<Image
+				source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+				resizeMode = {"stretch"}
+				style={styles.image3}
+			/>
+			<Image
+				source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+				resizeMode = {"stretch"}
+				style={styles.image3}
+			/>
+		</View>
+		<View style={styles.row3}>
+			<Text style={styles.text}>
+				{"ID:009"}
+			</Text>
+			<Text style={styles.text}>
+				{"ID:0010"}
+			</Text>
+			<Text style={styles.text}>
+				{"ID:009"}
+			</Text>
+		</View>
+		<View style={styles.row4}>
+			<Text style={styles.text}>
+				{"Chicken Thai Biriyani"}
+			</Text>
+			<Text style={styles.text}>
+				{"Chicken Biriyani"}
+			</Text>
+			<Text style={styles.text}>
+				{"Chicken Thai Biriyani"}
+			</Text>
+		</View>
+		<View style={styles.row5}>
+			<Text style={styles.text}>
+				{"#Breakfast"}
+			</Text>
+			<Text style={styles.text}>
+				{"#Lunch"}
+			</Text>
+			<Text style={styles.text}>
+				{"#Breakfast"}
+			</Text>
+		</View>
+		<View style={styles.row6}>
+			<View style={styles.view}>
+				<Text style={styles.text2}>
+					{"Add"}
+				</Text>
+			</View>
+			<View style={styles.view}>
+				<Text style={styles.text2}>
+					{"Add"}
+				</Text>
+			</View>
+			<View style={styles.view}>
+				<Text style={styles.text2}>
+					{"Add"}
+				</Text>
+			</View>
+		</View>
+		<View style={styles.row2}>
+			<Image
+				source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+				resizeMode = {"stretch"}
+				style={styles.image3}
+			/>
+			<Image
+				source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+				resizeMode = {"stretch"}
+				style={styles.image3}
+			/>
+			<Image
+				source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+				resizeMode = {"stretch"}
+				style={styles.image3}
+			/>
+		</View>
+		<View style={styles.row3}>
+			<Text style={styles.text}>
+				{"ID:009"}
+			</Text>
+			<Text style={styles.text}>
+				{"ID:0010"}
+			</Text>
+			<Text style={styles.text}>
+				{"ID:009"}
+			</Text>
+		</View>
+		<View style={styles.row4}>
+			<Text style={styles.text}>
+				{"Chicken Thai Biriyani"}
+			</Text>
+			<Text style={styles.text}>
+				{"Chicken Biriyani"}
+			</Text>
+			<Text style={styles.text}>
+				{"Chicken Thai Biriyani"}
+			</Text>
+		</View>
+		<View style={styles.row5}>
+			<Text style={styles.text}>
+				{"#Breakfast"}
+			</Text>
+			<Text style={styles.text}>
+				{"#Lunch"}
+			</Text>
+			<Text style={styles.text}>
+				{"#Breakfast"}
+			</Text>
+		</View>
+		<View style={styles.row6}>
+			<View style={styles.view}>
+				<Text style={styles.text2}>
+					{"Add"}
+				</Text>
+			</View>
+			<View style={styles.view}>
+				<Text style={styles.text2}>
+					{"Add"}
+				</Text>
+			</View>
+			<View style={styles.view}>
+				<Text style={styles.text2}>
+					{"Add"}
+				</Text>
+			</View>
+		</View>
+		<View style={styles.row7}>
+			<Image
+				source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+				resizeMode = {"stretch"}
+				style={styles.image3}
+			/>
+			<Image
+				source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+				resizeMode = {"stretch"}
+				style={styles.image3}
+			/>
+			<Image
+				source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+				resizeMode = {"stretch"}
+				style={styles.image3}
+			/>
+		</View>
+		<View style={styles.row3}>
+			<Text style={styles.text}>
+				{"ID:009"}
+			</Text>
+			<Text style={styles.text}>
+				{"ID:0010"}
+			</Text>
+			<Text style={styles.text}>
+				{"ID:009"}
+			</Text>
+		</View>
+		<View style={styles.row4}>
+			<Text style={styles.text}>
+				{"Chicken Thai Biriyani"}
+			</Text>
+			<Text style={styles.text}>
+				{"Chicken Biriyani"}
+			</Text>
+			<Text style={styles.text}>
+				{"Chicken Thai Biriyani"}
+			</Text>
+		</View>
+		<View style={styles.row8}>
+			<Text style={styles.text}>
+				{"#Breakfast"}
+			</Text>
+			<Text style={styles.text}>
+				{"#Lunch"}
+			</Text>
+			<Text style={styles.text}>
+				{"#Breakfast"}
+			</Text>
+		</View>
+		<View style={styles.row9}>
+			<View style={styles.view2}>
+				<Text style={styles.text2}>
+					{"Add"}
+				</Text>
+			</View>
+			<View style={styles.view2}>
+				<Text style={styles.text2}>
+					{"Add"}
+				</Text>
+			</View>
+			<View style={styles.view2}>
+				<Text style={styles.text2}>
+					{"Add"}
+				</Text>
+			</View>
+		</View>
+		<Image
+			source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+			resizeMode = {"stretch"}
+			style={styles.image4}
+		/>
+	</ScrollView>
+</SafeAreaView>
+    );
+};
+
+const styles = StyleSheet.create({
+    container: {
+		flex: 1,
+		backgroundColor: "#FFFFFF",
+	},
+	box: {
+		flex: 1,
+		alignSelf: "stretch",
+	},
+	image: {
+		width: 18,
+		height: 15,
+	},
+	image2: {
+		width: 18,
+		height: 20,
+	},
+	image3: {
+		borderRadius: 20,
+		width: 102,
+		height: 102,
+	},
+	image4: {
+		height: 49,
+		marginHorizontal: 190,
+	},
+	row: {
+		flexDirection: "row",
+		alignItems: "center",
+		marginBottom: 23,
+		marginHorizontal: 30,
+	},
+	row2: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginBottom: 10,
+		marginHorizontal: 20,
+	},
+	row3: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginBottom: 9,
+		marginHorizontal: 49,
+	},
+	row4: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginBottom: 10,
+		marginHorizontal: 3,
+	},
+	row5: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginBottom: 5,
+		marginHorizontal: 36,
+	},
+	row6: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginBottom: 33,
+		marginHorizontal: 25,
+	},
+	row7: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginBottom: 9,
+		marginHorizontal: 20,
+	},
+	row8: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginBottom: 6,
+		marginHorizontal: 36,
+	},
+	row9: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginBottom: 23,
+		marginHorizontal: 25,
+	},
+	scrollView: {
+		flex: 1,
+		backgroundColor: "#FFFAF5",
+		borderRadius: 20,
+		paddingTop: 73,
+	},
+	text: {
+		color: "#00474D",
+		fontSize: 14,
+	},
+	text2: {
+		color: "#FFFFFF",
+		fontSize: 14,
+	},
+	view: {
+		width: 90,
+		alignItems: "center",
+		backgroundColor: "#00474D",
+		borderRadius: 9,
+		paddingVertical: 14,
+	},
+	view2: {
+		width: 90,
+		alignItems: "center",
+		backgroundColor: "#00474D",
+		borderRadius: 9,
+		paddingVertical: 13,
+	},
+});
+
+export default App;

@@ -1,0 +1,422 @@
+import React from 'react';
+import { View, Text, StyleSheet,SafeAreaView,ScrollView,Image } from 'react-native';
+
+const App = () => {
+    return (
+        <SafeAreaView style={styles.container}>
+	<ScrollView  style={styles.scrollView}>
+		<View style={styles.row}>
+			<Image
+				source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+				resizeMode = {"stretch"}
+				style={styles.image}
+			/>
+			<View style={styles.box}>
+			</View>
+			<Image
+				source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+				resizeMode = {"stretch"}
+				style={styles.image2}
+			/>
+		</View>
+		<Text style={styles.text}>
+			{"Total 03 items"}
+		</Text>
+		<View style={styles.row2}>
+			<View style={styles.box2}>
+			</View>
+			<View style={styles.column}>
+				<Text style={styles.text2}>
+					{"Chicken Thai Biriyani"}
+				</Text>
+				<View style={styles.view}>
+					<Text style={styles.text3}>
+						{"Breakfast"}
+					</Text>
+				</View>
+				<View style={styles.row3}>
+					<Image
+						source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+						resizeMode = {"stretch"}
+						style={styles.image3}
+					/>
+					<Text style={styles.text4}>
+						{"4.9"}
+					</Text>
+					<Text style={styles.text5}>
+						{"(10 Review)"}
+					</Text>
+				</View>
+			</View>
+			<View style={styles.column2}>
+				<View style={styles.row4}>
+					<View style={styles.box3}>
+					</View>
+					<View style={styles.box3}>
+					</View>
+					<View style={styles.box3}>
+					</View>
+				</View>
+				<Text style={styles.text6}>
+					{"$60"}
+				</Text>
+				<Text style={styles.text7}>
+					{" Pick UP"}
+				</Text>
+			</View>
+		</View>
+		<View style={styles.row2}>
+			<View style={styles.box2}>
+			</View>
+			<View style={styles.column}>
+				<Text style={styles.text8}>
+					{"Chicken Bhuna"}
+				</Text>
+				<View style={styles.view}>
+					<Text style={styles.text3}>
+						{"Breakfast"}
+					</Text>
+				</View>
+				<View style={styles.row5}>
+					<Image
+						source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+						resizeMode = {"stretch"}
+						style={styles.image3}
+					/>
+					<Text style={styles.text4}>
+						{"4.9"}
+					</Text>
+					<Text style={styles.text5}>
+						{"(10 Review)"}
+					</Text>
+				</View>
+			</View>
+			<View style={styles.column2}>
+				<View style={styles.row4}>
+					<View style={styles.box3}>
+					</View>
+					<View style={styles.box3}>
+					</View>
+					<View style={styles.box3}>
+					</View>
+				</View>
+				<Text style={styles.text6}>
+					{"$30"}
+				</Text>
+				<Text style={styles.text7}>
+					{" Pick UP"}
+				</Text>
+			</View>
+		</View>
+		<View style={styles.row6}>
+			<View style={styles.box2}>
+			</View>
+			<View style={styles.column3}>
+				<Text style={styles.text2}>
+					{"Mazalichiken Halim"}
+				</Text>
+				<View style={styles.view}>
+					<Text style={styles.text3}>
+						{"Breakfast"}
+					</Text>
+				</View>
+				<View style={styles.row5}>
+					<Image
+						source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+						resizeMode = {"stretch"}
+						style={styles.image3}
+					/>
+					<Text style={styles.text4}>
+						{"4.9"}
+					</Text>
+					<Text style={styles.text5}>
+						{"(10 Review)"}
+					</Text>
+				</View>
+			</View>
+			<View style={styles.column2}>
+				<View style={styles.row4}>
+					<View style={styles.box3}>
+					</View>
+					<View style={styles.box3}>
+					</View>
+					<View style={styles.box3}>
+					</View>
+				</View>
+				<Text style={styles.text6}>
+					{"$25"}
+				</Text>
+				<Text style={styles.text7}>
+					{" Pick UP"}
+				</Text>
+			</View>
+		</View>
+		<View >
+			<View style={styles.column4}>
+				<View style={styles.row7}>
+					<Image
+						source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+						resizeMode = {"stretch"}
+						style={styles.image4}
+					/>
+					<Image
+						source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+						resizeMode = {"stretch"}
+						style={styles.image5}
+					/>
+					<Image
+						source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+						resizeMode = {"stretch"}
+						style={styles.image6}
+					/>
+					<Image
+						source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+						resizeMode = {"stretch"}
+						style={styles.image7}
+					/>
+				</View>
+				<View style={styles.row8}>
+					<Text style={styles.text9}>
+						{"Meal Plan"}
+					</Text>
+					<Text style={styles.text10}>
+						{"Groceries"}
+					</Text>
+					<Text style={styles.text10}>
+						{"Favorites"}
+					</Text>
+					<Text style={styles.text10}>
+						{"Settings"}
+					</Text>
+				</View>
+			</View>
+			<View style={styles.absoluteView}>
+				<View style={styles.row9}>
+					<Text style={styles.text11}>
+						{"Continue"}
+					</Text>
+					<Image
+						source = {{uri: "https://i.imgur.com/1tMFzp8.png"}} 
+						resizeMode = {"stretch"}
+						style={styles.image}
+					/>
+				</View>
+			</View>
+		</View>
+	</ScrollView>
+</SafeAreaView>
+    );
+};
+
+const styles = StyleSheet.create({
+    container: {
+		flex: 1,
+		backgroundColor: "#FFFFFF",
+	},
+	absoluteView: {
+		position: "absolute",
+		top: -65,
+		right: 0,
+		left: 0,
+		height: 73,
+		backgroundColor: "#00474D",
+		borderRadius: 16,
+		paddingLeft: 174,
+		paddingRight: 152,
+	},
+	box: {
+		flex: 1,
+		alignSelf: "stretch",
+	},
+	box2: {
+		width: 120,
+		height: 102,
+		backgroundColor: "#98A8B8",
+		borderRadius: 20,
+		marginRight: 14,
+	},
+	box3: {
+		width: 2,
+		height: 1,
+	},
+	column: {
+		flex: 1,
+		alignSelf: "flex-start",
+		marginTop: 14,
+		marginRight: 4,
+	},
+	column2: {
+		width: 47,
+		alignSelf: "flex-start",
+		marginTop: 20,
+	},
+	column3: {
+		flex: 1,
+		alignSelf: "flex-start",
+		paddingHorizontal: 2,
+		marginTop: 14,
+		marginRight: 4,
+	},
+	column4: {
+		backgroundColor: "#FFFFFF",
+		paddingTop: 17,
+		paddingBottom: 30,
+		shadowColor: "#423D370D",
+		shadowOpacity: 0.1,
+		shadowOffset: {
+		    width: 0,
+		    height: -10
+		},
+		shadowRadius: 16,
+		elevation: 16,
+	},
+	image: {
+		width: 18,
+		height: 15,
+	},
+	image2: {
+		width: 18,
+		height: 20,
+	},
+	image3: {
+		width: 16,
+		height: 13,
+		marginRight: 8,
+	},
+	image4: {
+		width: 17,
+		height: 18,
+	},
+	image5: {
+		width: 21,
+		height: 19,
+	},
+	image6: {
+		width: 21,
+		height: 18,
+	},
+	image7: {
+		width: 21,
+		height: 20,
+	},
+	row: {
+		flexDirection: "row",
+		alignItems: "center",
+		marginBottom: 53,
+		marginHorizontal: 30,
+	},
+	row2: {
+		flexDirection: "row",
+		marginBottom: 20,
+		marginHorizontal: 16,
+	},
+	row3: {
+		flexDirection: "row",
+		alignItems: "center",
+		marginHorizontal: 2,
+	},
+	row4: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginBottom: 25,
+		marginHorizontal: 4,
+	},
+	row5: {
+		flexDirection: "row",
+		alignItems: "center",
+	},
+	row6: {
+		flexDirection: "row",
+		marginBottom: 320,
+		marginHorizontal: 16,
+	},
+	row7: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginBottom: 7,
+		marginHorizontal: 49,
+	},
+	row8: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		marginHorizontal: 36,
+	},
+	row9: {
+		flexDirection: "row",
+		alignItems: "center",
+		marginTop: 29,
+	},
+	scrollView: {
+		flex: 1,
+		backgroundColor: "#FFFAF5",
+		borderRadius: 20,
+		paddingTop: 73,
+	},
+	text: {
+		color: "#9B9BA5",
+		fontSize: 14,
+		marginBottom: 20,
+		marginLeft: 16,
+	},
+	text2: {
+		color: "#32343E",
+		fontSize: 14,
+		marginBottom: 12,
+	},
+	text3: {
+		color: "#FF7621",
+		fontSize: 13,
+	},
+	text4: {
+		color: "#FB6D3A",
+		fontSize: 13,
+		marginRight: 18,
+	},
+	text5: {
+		color: "#AFAFAF",
+		fontSize: 13,
+		flex: 1,
+	},
+	text6: {
+		color: "#32343E",
+		fontSize: 17,
+		marginBottom: 17,
+	},
+	text7: {
+		color: "#AFAFAF",
+		fontSize: 13,
+	},
+	text8: {
+		color: "#32343E",
+		fontSize: 14,
+		marginBottom: 12,
+		marginLeft: 1,
+	},
+	text9: {
+		color: "#00474D",
+		fontSize: 12,
+	},
+	text10: {
+		color: "#B3B3B3",
+		fontSize: 12,
+	},
+	text11: {
+		color: "#FFFFFF",
+		fontSize: 18,
+		marginRight: 7,
+	},
+	view: {
+		width: 105,
+		height: 24,
+		backgroundColor: "#FF762133",
+		borderRadius: 29,
+		paddingVertical: 7,
+		paddingHorizontal: 16,
+		marginBottom: 13,
+	},
+});
+
+export default App;
