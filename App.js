@@ -1,40 +1,36 @@
-import { StyleSheet, Text, View, Button , TextInput} from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
+// Import your screens
+import DashboardScreen from './screens/DashboardScreen';
+import LeaveApplicationScreen from './screens/LeaveApplicationScreen';
+import CalendarScreen from './screens/CalendarScreen';
+
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={css.appContainer}>
-        <View>
-          <TextInput placeholder='our goal' style={css.text}/>
-          <Button title ='add' style={css.button}/>
-          <View>
-            <Text style={css.text2}>List of our goals..</Text>
-          </View>
-        </View>
-
-    </View>
-      
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Dashboard">
+        <Stack.Screen 
+          name="Dashboard" 
+          component={DashboardScreen} 
+          options={{ title: 'Dashboard' }}
+        />
+        <Stack.Screen 
+          name="LeaveApplication" 
+          component={LeaveApplicationScreen} 
+          options={{ title: 'Leave Application' }}
+        />
+        <Stack.Screen 
+          name="Calendar" 
+          component={CalendarScreen} 
+          options={{ title: 'Attendance Calendar' }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const css = StyleSheet.create({
-  appContainer: {
-    padding: 50,
-    margin: 50
-  },
-  text:{
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    marginBottom: 4,
-    padding: 4
-  },text2:{
-    padding: 4,
-    margin: 4
-  },
-  button:{
-    padding: 4,
-    margin: 4,
-    borderRadius: 20,
-    backgroundColor: 'black'
-  }
-
-});
+export default App;

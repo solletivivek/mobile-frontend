@@ -1,0 +1,272 @@
+//call
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, ScrollView, Alert, StyleSheet } from 'react-native';
+
+const CalendarWithEvents = () => {
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [attendanceRecords, setAttendanceRecords] = useState([]);
+  const [selectedDay, setSelectedDay] = useState(null);
+  const [eventList, setEventList] = useState([]);
+
+  const serverURL = "yourServerURL"; // Replace with your server URL
+  const selectedEmployeeId = "yourEmpID"; // Replace with employee ID or fetch it
+
+  useEffect(() => {
+    generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+  }, [currentDate]);
+
+  // Generate Calendar for the current month
+  const generateCalendar = (year, month) => {
+    const startDate = new Date(year, month, 1).toISOString().split('T')[0];
+    const endDate = new Date(year, month + 1, 0).toISOString().split('T')[0];
+
+    fetchAttendanceData(startDate, endDate);
+  };
+
+  // Fetch attendance data from server and update the state
+  const fetchAttendanceData = (startDate, endDate) => {
+    fetch(`http://${serverURL}/api/manageEmployee/attendance/getattendance/${selectedEmployeeId}/from/${startDate}/to/${endDate}`)
+      .then(response => response.json())
+      .then(data => {
+        setAttendanceRecords(data);
+      })
+      .catch(error => {
+        Alert.alert("Error", "Failed to fetch attendance data.");
+      });
+  };
+
+  // Show events when a day is clicked
+  const showDayEvents = (year, month, day) => {
+    const selectedRecord = attendanceRecords.find(record => {
+      const recordDate = new Date(record.check_in);
+      return recordDate.getFullYear() === year && recordDate.getMonth() === month && recordDate.getDate() === day;
+    });
+
+    if (selectedRecord) {
+      const events = [];
+      if (selectedRecord.check_in) {
+        events.push(`Check-in: ${new Date(selectedRecord.check_in).toLocaleTimeString()}`);
+      }
+      if (selectedRecord.check_out) {
+        events.push(`Check-out: ${new Date(selectedRecord.check_out).toLocaleTimeString()}`);
+      }
+      setEventList(events);
+    } else {
+      setEventList(['No attendance data available.']);
+    }
+    setSelectedDay(day);
+  };
+
+  const renderCalendarDays = () => {
+    const days = [];
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const daysInMonth = lastDay.getDate();
+    const startingDay = firstDay.getDay();
+
+    // Add empty cells for days before the first of the month
+    for (let i = 0; i < startingDay; i++) {
+      days.push(<View key={`empty-${i}`} style={styles.emptyDay} />);
+    }
+
+    // Add days of the month
+    for (let day = 1; day <= daysInMonth; day++) {
+      const date = new Date(year, month, day);
+      const isToday = date.toDateString() === new Date().toDateString();
+      const isSelected = selectedDay === day;
+      const hasAttendance = attendanceRecords.some(record => 
+        new Date(record.check_in).toDateString() === date.toDateString()
+      );
+
+      days.push(
+        <TouchableOpacity
+          key={day}
+          style={[
+            styles.day,
+            isToday && styles.today,
+            isSelected && styles.selectedDay,
+            hasAttendance && styles.attendedDay,
+          ]}
+          onPress={() => showDayEvents(year, month, day)}
+        >
+          <Text style={[
+            styles.dayText,
+            isToday && styles.todayText,
+            isSelected && styles.selectedDayText,
+          ]}>
+            {day}
+          </Text>
+        </TouchableOpacity>
+      );
+    }
+
+    return days;
+  };
+
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Attendance Calendar</Text>
+      </View>
+
+      <View style={styles.navigation}>
+        <TouchableOpacity onPress={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1))}>
+          <Text style={styles.navText}>&lt;</Text>
+        </TouchableOpacity>
+        <Text style={styles.currentMonth}>
+          {currentDate.toLocaleString('default', { month: 'long', year: 'numeric' })}
+        </Text>
+        <TouchableOpacity onPress={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1))}>
+          <Text style={styles.navText}>&gt;</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.weekDays}>
+        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
+          <Text key={day} style={styles.weekDay}>{day}</Text>
+        ))}
+      </View>
+
+      <View style={styles.calendarGrid}>
+        {renderCalendarDays()}
+      </View>
+
+      <View style={styles.eventList}>
+        <Text style={styles.eventTitle}>
+          {selectedDay ? `Events on ${selectedDay}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}` : 'Select a day'}
+        </Text>
+        {eventList.map((event, index) => (
+          <Text key={index} style={styles.eventItem}>
+            {event}
+          </Text>
+        ))}
+      </View>
+    </ScrollView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f7f7f7',
+    padding: 16,
+  },
+  header: {
+    backgroundColor: '#3498db',
+    padding: 20,
+    borderRadius: 15,
+    marginBottom: 20,
+    marginTop: 40,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  title: {
+    color: 'white',
+    fontSize: 28,
+    textAlign: 'center',
+    fontWeight: '700',
+  },
+  navigation: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: 15,
+    paddingHorizontal: 10,
+  },
+  currentMonth: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#34495e',
+  },
+  navText: {
+    fontSize: 24,
+    color: '#3498db',
+    fontWeight: '600',
+  },
+  weekDays: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 10,
+    backgroundColor: '#ecf0f1',
+    borderRadius: 10,
+    padding: 10,
+  },
+  weekDay: {
+    width: '14.28%',
+    textAlign: 'center',
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#7f8c8d',
+  },
+  calendarGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    borderWidth: 1,
+    borderColor: '#bdc3c7',
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  emptyDay: {
+    width: '14.28%',
+    aspectRatio: 1,
+    backgroundColor: '#f5f5f5',
+  },
+  day: {
+    width: '14.28%',
+    aspectRatio: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 0.5,
+    borderColor: '#bdc3c7',
+  },
+  dayText: {
+    fontSize: 16,
+    color: '#34495e',
+  },
+  today: {
+    backgroundColor: '#e8f5fe',
+  },
+  todayText: {
+    fontWeight: 'bold',
+    color: '#3498db',
+  },
+  selectedDay: {
+    backgroundColor: '#3498db',
+  },
+  selectedDayText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  attendedDay: {
+    backgroundColor: '#2ecc71',
+  },
+  eventList: {
+    marginTop: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 15,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
+  },
+  eventTitle: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#2c3e50',
+    marginBottom: 10,
+  },
+  eventItem: {
+    fontSize: 16,
+    marginVertical: 5,
+    color: '#34495e',
+  },
+});
+
+export default CalendarWithEvents;

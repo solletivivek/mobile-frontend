@@ -1,0 +1,209 @@
+// approve leave
+
+import React, { useState, useEffect } from 'react';
+import {
+  View,
+  Text,
+  Button,
+  FlatList,
+  StyleSheet,
+  Modal,
+  TextInput,
+  
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+
+const App = () => {
+  const [leaves, setLeaves] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [reason, setReason] = useState('');
+
+  // Function to calculate the total number of days
+  const calculateDays = (start, end) => {
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    const timeDifference = endDate - startDate;
+    const dayDifference = Math.ceil(timeDifference / (1000 * 3600 * 24)) + 1;
+    return dayDifference;
+  };
+
+  // Function to fetch leaves (dummy data for now)
+  const fetchLeaves = () => {
+    const dummyLeaves = [
+      {
+        status: 'Approved',
+        reason: 'Vacation',
+        start_date: '2024-10-01',
+        end_date: '2024-10-05',
+      },
+      {
+        status: 'Pending',
+        reason: 'Sick Leave',
+        start_date: '2024-10-10',
+        end_date: '2024-10-12',
+      },
+    ];
+    setLeaves(dummyLeaves);
+  };
+
+  // Handle form submission (currently local, without API)
+  const handleLeaveSubmit = () => {
+    const newLeave = {
+      status: 'Pending',
+      reason: reason,
+      start_date: startDate,
+      end_date: endDate,
+    };
+
+    setLeaves([...leaves, newLeave]); // Add new leave to list
+    setModalVisible(false); // Close modal
+    Alert.alert('Success', 'Leave requested successfully!');
+  };
+
+  useEffect(() => {
+    fetchLeaves(); // Fetch leaves when component mounts
+  }, []);
+
+  const renderLeaveItem = ({ item }) => (
+    <View style={styles.leaveCard}>
+      <View style={styles.leaveHeader}>
+        <Text style={styles.leaveStatus}>
+          {item.status === 'Approved'
+            ? 'Approved'
+            : item.status === 'Pending'
+            ? 'Pending'
+            : 'Rejected'}
+        </Text>
+        <Text style={styles.leaveReason}>Reason: {item.reason}</Text>
+      </View>
+      <View style={styles.leaveBody}>
+        <Text>Total Days: {calculateDays(item.start_date, item.end_date)}</Text>
+        <Text>From: {new Date(item.start_date).toLocaleDateString()}</Text>
+        <Text>To: {new Date(item.end_date).toLocaleDateString()}</Text>
+      </View>
+    </View>
+  );
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Leave Application</Text>
+        <Button title="Request +" onPress={() => setModalVisible(true)} />
+      </View>
+
+      <FlatList
+        data={leaves}
+        renderItem={renderLeaveItem}
+        keyExtractor={(item, index) => index.toString()}
+        ListEmptyComponent={<Text>No leaves found.</Text>}
+      />
+
+      {/* Modal for Leave Request */}
+      <Modal visible={modalVisible} animationType="slide" transparent={true}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Request Leave</Text>
+            <TextInput
+              placeholder="Start Date (YYYY-MM-DD)"
+              style={styles.input}
+              value={startDate}
+              onChangeText={setStartDate}
+            />
+            <TextInput
+              placeholder="End Date (YYYY-MM-DD)"
+              style={styles.input}
+              value={endDate}
+              onChangeText={setEndDate}
+            />
+            <TextInput
+              placeholder="Reason"
+              style={styles.input}
+              value={reason}
+              onChangeText={setReason}
+            />
+            <View style={styles.buttonContainer}>
+              <Button title="Cancel" onPress={() => setModalVisible(false)} />
+              <Button title="Submit" onPress={handleLeaveSubmit} />
+            </View>
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f3f3f3',
+    padding: 16,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+    marginTop: 40,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  leaveCard: {
+    backgroundColor: '#fff',
+    padding: 16,
+    marginVertical: 8,
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+  },
+  leaveHeader: {
+    marginBottom: 8,
+  },
+  leaveStatus: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  leaveReason: {
+    fontSize: 14,
+    color: '#666',
+  },
+  leaveBody: {
+    marginTop: 8,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 8,
+    width: 300,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 16,
+  },
+  input: {
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 8,
+    padding: 8,
+    marginBottom: 16,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+});
+
+export default App;
