@@ -7,6 +7,7 @@ import DashboardScreen from './screens/DashboardScreen';
 import LeaveApplicationScreen from './screens/LeaveApplicationScreen';
 import CalendarScreen from './screens/CalendarScreen';
 
+
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -34,3 +35,4 @@ const App = () => {
 };
 
 export default App;
+
