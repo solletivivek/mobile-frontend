@@ -41,22 +41,22 @@ const App = () => {
           <Stack.Screen
               name="Login"
               component={LoginScreen}
-              options={{ title: 'Loginscreen' }}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="Dashboard"
               component={DashboardScreen}
-              options={{ title: 'Dashboard' }}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="LeaveApplication"
+              name="Leave"
               component={LeaveApplicationScreen}
-              options={{ title: 'Leave Application' }}
+              options={{title: 'Leave Application'}}
             />
             <Stack.Screen
-              name="Calendar"
+              name="Cal"
               component={CalendarScreen}
-              options={{ title: 'Attendance Calendar' }}
+              options={{ title: 'Attendance' }}
             />
           </>
         )}

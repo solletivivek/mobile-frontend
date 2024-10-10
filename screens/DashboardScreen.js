@@ -548,7 +548,7 @@ const WaiterDashboard =  ({ navigation }) => {
                 <Text style={styles.quickActionSubText}>Request time off</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.quickActionCard} onPress={() => navigation.navigate('Calender')}>
+                <TouchableOpacity style={styles.quickActionCard} onPress={() => navigation.navigate('Cal')}>
                 <Ionicons name="checkmark-done-outline" size={32} color="white" />
                 <Text style={styles.quickActionText}>Check My Attendance</Text>
                 <Text style={styles.quickActionSubText}>Track attendance</Text>
@@ -597,7 +597,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         marginBottom: 16,
-        marginTop: 45,
+        marginTop: 20,
     },
     backButton: {
         padding: 8,
@@ -618,8 +618,9 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     welcomeText: {
-        fontSize: 24,
+        fontSize: 30,
         fontWeight: "bold",
+        paddingBottom: 10,
     },
     userText: {
         fontSize: 18,

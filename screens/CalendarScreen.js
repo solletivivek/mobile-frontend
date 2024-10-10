@@ -246,12 +246,12 @@ const CalendarWithEvents = () => {
       setSelectedEmployeeId(empid);
       const serverURL = await AsyncStorage.getItem('serverURL');
       setServerURL(serverURL);
-      if (empid) {
+      
         setSelectedEmployeeId(empid);
         setServerURL(serverURL);
         generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
 
-      }
+      
     };
     checkLogin();
   }, [currentDate]);
@@ -387,7 +387,7 @@ const CalendarWithEvents = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Attendance Calendar</Text>
+        <Text style={styles.title}>Calendar</Text>
       </View>
 
       <View style={styles.navigation}>
@@ -441,7 +441,7 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 25,
     marginBottom: 20,
-    marginTop: 60,
+    marginTop: 20,
   },
   title: {
     color: 'white',

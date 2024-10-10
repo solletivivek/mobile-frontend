@@ -320,11 +320,10 @@ const LeaveApplicationScreen = () => {
     const fetchStoredData = async () => {
       const storedEmpid = await AsyncStorage.getItem('empid');
       const storedServerURL = await AsyncStorage.getItem('serverURL');
-      if(storedEmpid && storedServerURL){
         setEmpid(storedEmpid);
         setServerURL(storedServerURL);
         fetchLeaves(storedEmpid, storedServerURL);
-      }
+      
     };
     fetchStoredData();
   }, []);
@@ -353,6 +352,7 @@ const LeaveApplicationScreen = () => {
       end_date: endDate.toISOString().split('T')[0],
       reason,
     };
+    console.log('Leave request data:', formData);
 
     try {
       const response = await fetch(`http://${serverURL}/api/manageEmployee/attendance/leave/apply`, {
@@ -362,9 +362,12 @@ const LeaveApplicationScreen = () => {
         },
         body: JSON.stringify(formData),
       });
-      Alert.alert('Success', 'Leave requested successfully!');
-      setPopupVisible(false);
-      fetchLeaves(empid, serverURL);
+      if (response.ok) {
+        setPopupVisible(false);
+        fetchLeaves(empid, serverURL);
+        Alert.alert('Success', 'Leave requested successfully!');
+        return;
+      }
     } catch (error) {
       console.error('Error requesting leave:', error);
       Alert.alert('Error', 'Failed to request leave.');
@@ -494,7 +497,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F3F4F6',
     padding: 20,
-    paddingTop: 60,
+    paddingTop: 20,
   },
   header: {
     flexDirection: 'row',
