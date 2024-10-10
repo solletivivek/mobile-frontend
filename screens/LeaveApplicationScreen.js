@@ -305,7 +305,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
-const LeaveApplication = () => {
+const LeaveApplicationScreen = () => {
   const [leaves, setLeaves] = useState([]);
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
@@ -630,4 +630,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LeaveApplication;
+export default LeaveApplicationScreen;

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { StatusBar } from 'react-native';
 
 // Import screens
 import DashboardScreen from './screens/DashboardScreen';
 import LeaveApplicationScreen from './screens/LeaveApplicationScreen';
 import CalendarScreen from './screens/CalendarScreen';
 import SplashScreen from './screens/SplashScreen'; // Add your SplashScreen
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import LoginScreen from './screens/LoginScreen';
 
 const Stack = createStackNavigator();
 
@@ -23,7 +26,8 @@ const App = () => {
   }, []);
 
   return (
-    <NavigationContainer>
+    <NavigationContainer> 
+      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       <Stack.Navigator initialRouteName="Splash">
         {isLoading ? (
           // Show SplashScreen as the initial screen
