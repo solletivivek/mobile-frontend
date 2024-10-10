@@ -38,6 +38,11 @@ const App = () => {
           />
         ) : (
           <>
+          <Stack.Screen
+              name="Login"
+              component={LoginScreen}
+              options={{ title: 'Loginscreen' }}
+            />
             <Stack.Screen
               name="Dashboard"
               component={DashboardScreen}
