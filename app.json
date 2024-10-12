@@ -19,7 +19,14 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.vivekspamzz.mob"
+      "package": "com.vivekspamzz.mob",
+      "networkSecurityConfig": {
+        "domainConfigs": [
+          {
+            "cleartextTrafficPermitted": true
+          }
+        ]
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -28,6 +35,9 @@
       "eas": {
         "projectId": "45a46b36-5d5a-4655-a8e0-49dea95fa819"
       }
-    }
+    },
+    "plugins": [
+      "expo-build-properties"
+    ]
   }
 }
