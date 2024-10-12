@@ -19,25 +19,33 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.vivekspamzz.mob",
-      "networkSecurityConfig": {
-        "domainConfigs": [
-          {
-            "cleartextTrafficPermitted": true
-          }
-        ]
-      }
+      "package": "com.vivekspamzz.mob"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
+ 
     "extra": {
       "eas": {
         "projectId": "45a46b36-5d5a-4655-a8e0-49dea95fa819"
       }
     },
     "plugins": [
-      "expo-build-properties"
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true,
+            "networkSecurityConfig": {
+              "domainConfigs": [
+                {
+                  "cleartextTrafficPermitted": true
+                }
+              ]
+            }
+          }
+        }
+      ]
     ]
   }
 }
