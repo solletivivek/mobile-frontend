@@ -1,3 +1,5 @@
+
+
 {
   "cli": {
     "version": ">= 12.5.1",
@@ -12,7 +14,13 @@
       "distribution": "internal"
     },
     "production": {
-      "autoIncrement": true
+      "autoIncrement": true,
+      "android": {
+       
+        "env": {
+          "EXPO_USE_CLEARTEXT": "true"
+        }
+      }
     }
   },
   "submit": {

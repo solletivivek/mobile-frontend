@@ -71,43 +71,64 @@
 
 
 //charan
-import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+// import React from 'react';
+// import { Button, StyleSheet, View } from 'react-native';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
+// import WebScreen from './screens/WebScreen'; // Import your WebScreen component
+
+// const Stack = createStackNavigator();
+
+// const App = () => {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator initialRouteName="Home">
+//         <Stack.Screen name="Home" component={HomeScreen} />
+//         <Stack.Screen name="Web" component={WebScreen} options={{ headerShown: false }} />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// };
+
+// const HomeScreen = ({ navigation }) => {
+//   return (
+//     <View style={styles.container}>
+//       <Button
+//         title="Open Website"
+//         onPress={() => navigation.navigate('Web', { url: 'http:/192.168.31.48:8898/mobile/qtsemployee/index.html' })} // Replace with your URL
+//       />
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     paddingTop: 20,
+//   },
+// });
+
+// export default App;
+
+
+//charan2
+import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import WebScreen from './screens/WebScreen'; // Import your WebScreen component
+import HomeScreen from './screens/HomeScreen';
+import WebViewScreen from './screens/WebViewScreen';
 
 const Stack = createStackNavigator();
 
-const App = () => {
+export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Web" component={WebScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="WebView" component={WebViewScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
-
-const HomeScreen = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      <Button
-        title="Open Website"
-        onPress={() => navigation.navigate('Web', { url: 'http:/192.168.31.48:8898/mobile/qtsemployee/index.html' })} // Replace with your URL
-      />
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: 20,
-  },
-});
-
-export default App;
+}
